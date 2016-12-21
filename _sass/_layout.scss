@@ -57,7 +57,7 @@
 .banner {
   height: 70px;
   width: 100%;
-  background: url(../img/home_banner.jpg) no-repeat center;
+  // background: url(../img/home_banner.jpg) no-repeat center;
   background-size: cover;
   background-position: top; 
 
@@ -85,7 +85,7 @@
  * Site header
  */
 .site-header {
-    min-height: 70px;
+    max-height: 70px;
     width: 100%;
     position: fixed;
     top: 0;

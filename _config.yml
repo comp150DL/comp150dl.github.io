@@ -21,11 +21,13 @@ email: gen@microsoft.com
 organization: Tufts Computer Science
 description: > # this means to ignore newlines until "baseurl:"
   Spring 2017
+logo: img/tufts-logo-blue.png
+logourl: cs.tufts.edu
 
 # Build settings
 markdown: kramdown
 url: "https://comp150-02.github.io"
-baseurl: "/"
+baseurl: ""
 sass:
   sass_dir: _sass
 include: ['_pages']

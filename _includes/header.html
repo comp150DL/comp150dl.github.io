@@ -1,7 +1,8 @@
-<header class="intro">
-  <h1>{{ site.title }}</h1><h3>{{ site.subtitle }}</h3>
-  <!-- <div class="arrow">&blacktriangledown;</div> -->
-</header>
+<header class="banner"></header>
+<!-- <header class="intro"> -->
+<!--   <\!-- <h1>{{ site.title }}</h1><h3>{{ site.subtitle }}</h3> -\-> -->
+<!--   <\!-- <div class="arrow">&blacktriangledown;</div> -\-> -->
+<!-- </header> -->
 
 <header class="site-header">
 
@@ -20,6 +21,9 @@
 
       <div class="trigger">
         {% for my_page in site.pages %}
+          {% if my_page.logo %}
+          <a class="page-link" href="{{ my_page.logourl }}"><img src="{{ my_page.logo }}"></a>
+          {% endif %}
           {% if my_page.title %}
           <a class="page-link" href="{{ my_page.url | prepend: site.baseurl }}">{{ my_page.title }}</a>
           {% endif %}
