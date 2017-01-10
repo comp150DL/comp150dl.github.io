@@ -21,12 +21,14 @@
 
       <div class="trigger">
         {% for my_page in site.pages %}
+         {% unless my_page.exclude %}
           {% if my_page.logo %}
           <a class="page-link" href="{{ my_page.logourl }}"><img src="{{ my_page.logo }}"></a>
           {% endif %}
           {% if my_page.title %}
           <a class="page-link" href="{{ my_page.url | prepend: site.baseurl }}">{{ my_page.title }}</a>
           {% endif %}
+         {% endunless %}
         {% endfor %}
       </div>
     </nav>
