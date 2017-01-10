@@ -8,9 +8,9 @@
 
 $table-border-color: #b8b8b8;
 $table-warning-row-color: #ffffb2;
-$table-vacay-row-color: #7fbf7f;
-$table-speaker-row-color: #92dcff;
-$table-present-row-color: #d896ff;
+$table-vacay-row-color: lighten(#7fbf7f, 30%);
+$table-speaker-row-color: lighten(#92dcff, 15%);
+$table-present-row-color: lighten(#d896ff, 15%);
 
 tr.warning {
     background-color: $table-warning-row-color
