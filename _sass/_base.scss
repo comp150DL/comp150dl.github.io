@@ -13,7 +13,7 @@ dl, dd, ol, ul, figure {
 /**
  * Basic styling
  */
-
+$brand-color: darken(#92dcff, 15%);
 html {
     height: 100%;
     width: 100%;
@@ -98,14 +98,13 @@ h1 {
  * Links
  */
 a {
-    color: $brand-color;
+    color: darken($brand-color, 15%);
     text-decoration: none;
 
     &:hover {
         color: lighten($brand-color, 15%);
     }
 }
-
 
 
 /**

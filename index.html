@@ -1,337 +1,149 @@
 ---
-# You don't need to edit this file, it's empty on purpose.
-# Edit theme's home layout instead if you wanna make some changes
-# See: https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 layout: default
 ---
+<center>
+<h1 class="post-title">Deep Learning for Computer Vision: <a href="http://www.cs.tufts.edu">Tufts</a> Spring 2017</h1>
+<h3>Spring 2017, TR 7:30 to 8:45pm, Halligan Hall 111B.</h3>
+<img  src="./img/multilabel_cnn_results.png">
+     <p>
+     <font size="2">
+       Multilabel Convolutional Neural Network (CNN) Classification results from the COCO-Attributes Dataset
+     </font>
+     </p>
+</center>
 
-<h2>Tentative Schedule</h2>
+<h2>Course Description</h2>
+<small><a href="http://www.cs.tufts.edu/Course-Descriptions.html">Course Catalog 
+Entry</a></small> 
+<br>
+<p>
+This course provides a practical foundation for deep learning, with a
+special emphasis on those methods used in computer vision. The first
+part of the class will introduce students to simple neural networks,
+convolutional neural networks, and some elements of recurrent neural
+networks, such as long short-term memory networks (LSTMs). Students
+will implement, train, and test their own end-to-end models for image
+classification. This course will cover the algorithmic fundamentals of
+deep learning (backpropagation, optimization, etc.) as well as
+engineering heuristics for getting networks to perform well.
+</p>
+<p> The second part of the course investigates current research topics
+in deeplearning and object detection. These topics will be pursued
+through independent reading, class discussion and presentations, and
+and a final project that relates to current research problems in
+computer vision.
+</p>
+<p>
+The goal of this course is to give students the background and skills
+necessary to perform research in deep learning and computer
+vision. Students should understand the strengths and weaknesses of
+current approaches to research problems and identify interesting open
+questions and future research directions. Students will hopefully
+improve their critical reading and communication skills, as well.
+</p>
+<p>
+COMP 150-02 and the accompanying lectures, notes, and assingments are
+adapted from the Stanford CS
+class <a href="http://cs231n.stanford.edu/">CS231n</a> the
+UMassAmherst class <a href="https://compsci697l.github.io/">COMPSCI
+697L</a>. Many thanks to Fei-Fei Li, Andrej Karpathy, and Erik
+Learned-Miller for graciously letting us use their course materials!
+</p>
 
-<div>
-<table class="table">
-  <thead>
-    <tr>
-      <td >Date</td>
-      <td >Paper</td>
-      <td >Slides, Paper, Project page</td>
-      <td >Presenter</td>
-    </tr>
-  </thead>
-    <tr>
-      <td>Thurs, Jan 19
-      </td>
-      <td> Brief History of Visual Classification; Overview of Software Requirements.
-      </td>
-      <td>
-      </td>
-      <td>
-      </td>
-    </tr>
+<h2>Course Requirements</h2>
+<h3>Coding Assignments</h3>
 
-    <tr>
-      <td>Tues, Jan 24
-      </td>
-      <td> Intro to Image Classification
-      </td>
-      <td>
-      </td>
-      <td>
-      </td>
-    </tr>
 
-    <tr>
-      <td>Thurs, Jan 26
-      </td>
-      <td><b>Exploring Nearest Neighbor Approaches for Image
-      Captioning.</b> Jacob Devlin, Saurabh Gupta, Ross Girshick,
-Margaret Mitchell, C Lawrence Zitnick. arXiv, 2015.
-      </td>
-      <td><a href="http://arxiv.org/abs/1505.04467">arXiv</a>
-      <td>???
-      </td>
-    </tr>
+<h3>Reading and Summaries</h3>
+<p> 
+Students will be expected to read 10-11
+papers from the deep learning literature. These papers will be
+presented in class by other students, and all student audience members
+are expected to be prepared for discussion. For each assigned paper,
+students must write a two or three sentence summary and identify at
+least one question or topic of interest for class
+discussion. Interesting topics for discussion could relate to
+strengths and weaknesses of the paper, possible future directions,
+connections to other research, uncertainty about the conclusions of
+the experiments, etc. Reading summaries must be posted to
+the <a href="http://comp150-02.blogspot.com/">class blog</a> by <b>11:59pm
+the day before each class</b>. Feel free to reply to other comments on the
+blog and help each other understanding confusing aspects of the
+papers. The blog discussion will be the starting point for the class
+discussion. If you are presenting you don't need to post a summary to
+the blog.
+</p>
 
-    <tr>
-      <td>Tues, Jan 31
-      </td>
-      <td> Linear Classification: loss functions, optimization, gradient descent
-      </td>
-      <td>
-      </td>
-      <td>
-      </td>
-    </tr>
-    
-    <tr>
-      <td>Thurs, Feb 2
-      </td>
-      <td> Backpropagation and Intro to Neural Nets
-      </td>
-      <td>
-      </td>
-      <td>
-      </td>
-    </tr>
+<h3>Presentations</h3> 
+<p>
+Depending on enrollment, students will lead
+the discussion of one or two papers during the semester. Ideally,
+students would implement some aspect of the presented material and
+perform experiments that help understand the algorithms. Presentations
+and all supplemental material should be ready one week before the
+presentation date so that students can meet with the instructor, go
+over the presentation, and possibly iterate before the in-class
+discussion. For the presentations it is fine to use slides and code
+from outside sources (for example, the paper authors) but be sure to
+give credit.
+</p>
 
-    <tr class="warning">
-      <td>Tues, Feb 7
-      </td>      
-      <td> Assignment #1 Due
-      </td>
-      <td>
-      </td>
-      <td>
-      </td>
-    </tr>
-    
-    <tr>
-      <td>Tues, Feb 7
-      </td>
-      <td> Training Neural Nets I: activation functions, weight initialization, hyperparameter optimization
-      </td>
-      <td>
-      </td>
-      <td>
-      </td>
-    </tr>
+<h3>Semester projects</h3> 
+<p>
+Students are expected to complete a
+state-of-the-art research project on topics relevant to the
+course. Students will propose a research topic part way through the
+semester. After a project topic is finalized, students will meet
+occasionally with the instructor to discuss progress. Students will
+present their progress on their semester project twice during the
+course and the course will end with final project
+presentations. Students will also produce a conference-formatted
+write-up of their project. Projects will be published on the this web
+page. The ideal project is something with a clear enough direction to
+be completed in a couple of months, and enough novelty such that it
+could be published in a peer-reviewed venue with some refinement and
+extension.
+</p>
 
-    <tr>
-      <td>Thurs, Feb 9
-      </td>
-      <td> Training Neural Nets II: overfitting, parameter updates, ensembles
-      </td>
-      <td>
-      </td>
-      <td>
-      </td>
-    </tr>
+<h2>Prerequisites</h2> 
+<p>
+Strong mathematical skills (linear algebra,
+calculus, probability and statistics) and previous imaging (graphics,
+vision, or computational photography) courses are needed.  It is
+strongly recommended that students have taken one of the following
+courses (or equivalent courses at other institutions):
+</p>
 
-    <tr>
-      <td>Tues, Feb 14
-      </td>
-      <td> Intro to Convolutional Neural Networks
-      </td>
-      <td>
-      </td>
-      <td>
-      </td>
-    </tr>
+<ul id="prereqs">
+  <li><a href="http://www.cs.brown.edu/courses/csci1230.html">CSCI 1230, Introduction to Computer Graphics</a>
+  </li><li><a href="http://www.cs.brown.edu/courses/csci1950-g/">CSCI 1290, Computational 
+Photography</a>
+  </li><li><a href="http://www.cs.brown.edu/courses/csci1430.html">CSCI 1430, Introduction to Computer Vision</a>
+  </li><li><a href="http://www.cs.brown.edu/courses/csci2240.html">CSCI 2240, Interactive Computer Graphics</a>
+  </li><li><a href="http://mesh.brown.edu/engn1610/">ENGN 1610, Image Understanding</a>
+</li></ul>
 
-    <tr>
-      <td>Thurs, Feb 16
-      </td>
-      <td><b>ImageNet Classification with Deep Convolutional Neural
-      Networks.</b> Alex Krizhevsky, Ilya Sutskever, Geoffrey E
-      Hinton. NIPS 2012.
-      </td>
-      <td><a href="http://www.cs.toronto.edu/%7Efritz/absps/imagenet.pdf">pdf</a>
-      </td>
-      <td>???
-      </td>
-    </tr>
+<h2>Textbook</h2>
+We will not rely on a textbook, although the free, online textbook <a href="http://research.microsoft.com/en-us/um/people/szeliski/Book/">"Computer 
+Vision: Algorithms and Applications"</a> by <a href="http://research.microsoft.com/en-us/um/people/szeliski/">Richard Szeliski</a> is a 
+helpful resource.
 
-    <tr>
-      <td>Tues, Feb 21
-      </td>
-      <td> CNNs for Object Detection and Segmentation
-      </td>
-      <td>
-      </td>
-      <td>
-      </td>
-    </tr>
+<h2>Grading</h2>
+Your final grade will be made up from
+<ul id="grades">
+  <li>20% Reading summaries posted to <a href="http://csci2951t.blogspot.com/">class blog</a></li>
+  <li>20% Classroom participation and attendance, including completion of coding tutorials and project progress reports</li>
+  <li>20% Paper presentation(s), including partial system implementation or testing</li>
+  <li>40% Semester project</li>
+</ul>
 
-    <tr>
-      <td>Thurs, Feb 23 
-      </td>
-      <td> Training CNNs in practice
-      </td>
-      <td>
-      </td>
-      <td>
-      </td>
-    </tr>
+<h2>Course Questions</h2>
+<a href="https://piazza.com/class/ix9hgsojx9a16b">Piazza</a>
 
-    <tr>
-      <td>Tues, Feb 28
-      </td>
-      <td><b>Fast R-CNN.</b> Ross Girshick. ICCV 2015.</td>
-      <td><a href="http://arxiv.org/abs/1504.08083">arXiv</a>, <a href="https://github.com/rbgirshick/fast-rcnn">code</a></td>
-      <td>???
-      </td>
-    </tr>
+<h2>Staff<h2>
+Instructor: <a href="http://www.cs.brown.edu/~gen/">Genevieve Patterson</a> 
+TA: Rishit Sheth
 
-    <tr class="warning">
-      <td>Thurs, Mar 2
-      </td>      
-      <td> Assignment #2 Due
-      </td>
-      <td>
-      </td>
-      <td>
-      </td>
-    </tr>
-    
-    <tr>
-      <td>Thurs, Mar 2
-      </td>
-      <td><b>Diagnosing error in object detectors.</b> Derek Hoiem,
-      Yodsawalai Chodpathumwan, and Qieyun Dai. ECCV 2012.</td>
-      <td><a href="http://web.engr.illinois.edu/%7Edhoiem/projects/detectionAnalysis/">project
-      page</a>, Examples of Hoiem-style analysis</td>
-      <td> ???
-      </td>
-    </tr>
-
-    <tr>
-      <td>Tues, Mar 7
-      </td>
-      <td> Project Status Presentations
-      </td>
-      <td>
-      </td>
-      <td>Everybody (10 mins per group)
-      </td>
-    </tr>    
-
-    <tr>
-      <td>Thurs, Mar 9
-      </td>
-      <td> SSD
-      </td>
-      <td>
-      </td>
-      <td>???
-      </td>
-    </tr>
-
-    <tr>
-      <td>Tues, Mar 14
-      </td>
-      <td><b>Fully Convolutional Networks for Semantic Segmentation.</b> Jonathan Long, Evan Shelhamer, Trevor Darrell. CVPR 2015.</td>
-      <td><a href="http://arxiv.org/abs/1411.4038">arXiv</a></td>
-      <td>???
-      </td>
-    </tr>
-
-    <tr>
-      <td>Thurs, Mar 16
-      </td>
-      <td><b>Understanding Deep Image Representations by Inverting Them.</b> Aravindh Mahendran, Andrea Vedaldi. CVPR 2015.</td>
-      <td><a href="http://arxiv.org/abs/1412.0035">arXiv</a></td>
-      <td>???
-      </td>
-    </tr>
-
-    <tr class="warning">
-      <td>Thurs, Mar 28
-      </td>      
-      <td> Assignment #3 Due
-      </td>
-      <td>
-      </td>
-      <td>
-      </td>
-    </tr>        
-
-    <tr>
-      <td>Tues, Mar 28
-      </td>
-      <td> Special Guest: Bolei Zhou
-      </td>
-      <td>
-      </td>
-      <td>
-      </td>
-    </tr>
-
-    <tr>
-      <td>Thurs, Mar 30
-      </td>
-      <td> Recurrent Neural Nets, Long Short Term Memory, Siamese Nets
-      </td>
-      <td>
-      </td>
-      <td>
-      </td>
-    </tr>
-
-    <tr>
-      <td>Tues, Apr 4
-      </td>
-      <td> Unsupervised Learning: Autoencoders, Generative Adversarial Networks
-      </td>
-      <td>
-      </td>
-      <td>
-      </td>
-    </tr>
-
-    <tr>
-      <td>Thurs, Apr 6
-      </td>
-      <td><b>Learning Visual Similarity for Product Design with Convolutional Neural Networks.</b> Sean Bell, Kavita Bala. Siggraph 2015.</td>
-      <td><a href="http://www.cs.cornell.edu/%7Esbell/">author page</a>, <a href="http://www.seanbell.ca/tmp/siggraph2015-bell-bala.pdf">pdf</a></td>
-      <td>???
-      </td>
-    </tr>
-
-    <tr>
-      <td>Tues, Apr 11
-      </td>
-      <td><b>Learning Deep Representations for Ground-to-Aerial Geolocalization.</b> Tsung-Yi Lin, Yin Cui, Serge Belongie, James Hays. CVPR 2015.</td>
-      <td><a href="http://www.cv-foundation.org/openaccess/content_cvpr_2015/papers/Lin_Learning_Deep_Representations_2015_CVPR_paper.pdf">pdf</a></td>
-      <td>???
-      </td>
-    </tr>
-
-    <tr>
-      <td>Thurs, Apr 13
-      </td>
-      <td><b>VQA: Visual Question Answering.</b> S. Antol*, A. Agrawal*, J. Lu, M. Mitchell, D. Batra, C. L. Zitnick, and D. Parikh. ICCV, 2015.</td>
-      <td><a href="http://www.visualqa.org/">project page</a>, <a href="http://arxiv.org/abs/1505.00468">arXiv</a></td>      <td>???
-      </td>
-    </tr>
-
-    <tr>
-      <td>Tues, Apr 18
-      </td>
-      <td><b>Unsupervised Representation Learning with Deep Convolutional Generative Adversarial Networks.</b> Alec Radford, Luke Metz, Soumith Chintala. 2015.</td>
-      <td><a href="https://github.com/Newmu/dcgan_code">project page</a>, <a href="http://arxiv.org/abs/1511.06434">arXiv</a></td>
-      <td>???
-      </td>
-    </tr>
-
-    <tr>
-      <td>Thurs, Apr 20
-      </td>
-      <td><b>Deep Generative Image Models using a Laplacian Pyramid of Adversarial Networks.</b> Emily Denton, Soumith Chintala, Arthur Szlam, Rob Fergus. 2015.</td>
-      <td><a href="http://soumith.ch/eyescream/">project page</a>, <a href="http://arxiv.org/abs/1506.05751">arXiv</a></td>
-      <td>???
-      </td>
-    </tr>
-
-    <tr>
-      <td>Tues, Apr 25
-      </td>
-      <td>Final Presentations
-      </td>
-      <td>
-      </td>
-      <td>Everybody (20 mins per group)
-      </td>
-    </tr>
-
-    <tr>
-      <td>Thurs, Apr 27
-      </td>
-      <td>Final Presentations
-      </td>
-      <td>
-      </td>
-      <td>Everybody (20 mins per group)
-      </td>
-    </tr>
-</table>
-<p> * Note: Final Project reports due 11:59 PM EST on Fri May 5. </p>
-</div>
+<h2>Office Hours: </h2>
+Genevieve Patterson, ???
+Rishit Sheth, ???
