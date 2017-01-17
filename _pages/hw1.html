@@ -1,7 +1,138 @@
 ---
 layout: page
-title: Assignment 1
+title: HW 1
 permalink: /hw/hw1/
 exclude: true
 ---
 
+<article class="post-content">
+  <p>In this assignment you will practice putting together a simple
+  image classification pipeline, based on the k-Nearest Neighbor or
+  the SVM/Softmax classifier. The goals of this assignment are as
+  follows:</p>
+
+<ul>
+  <li>understand the basic <strong>Image Classification
+  pipeline</strong> and the data-driven approach (train/predict
+  stages)</li>
+  <li>understand the train/val/test <strong>splits</strong> and the
+  use of validation data for <strong>hyperparameter
+  tuning</strong>.</li>
+  <li>develop proficiency in writing
+  efficient <strong>vectorized</strong> code with numpy</li>
+  <li>implement and apply a k-Nearest Neighbor (<strong>kNN</strong>)
+  classifier</li>
+  <li>implement and apply a Multiclass Support Vector Machine
+  (<strong>SVM</strong>) classifier</li>
+  <li>implement and apply a <strong>Softmax</strong> classifier</li>
+  <li>implement and apply a <strong>Two layer neural network</strong>
+  classifier</li>
+  <li>understand the differences and tradeoffs between these
+  classifiers</li>
+  <li>get a basic understanding of performance improvements from
+  using <strong>higher-level representations</strong> than raw pixels
+  (e.g. color histograms, Histogram of Gradient (HOG) features)</li>
+</ul>
+
+<h3 id="setup">Setup</h3>
+<p>Get the starter code by cloning the <a href="https://github.com/comp150DL/hw1.git">hw1 github repository</a>. 
+This can be accomplished by executing the following command:</p>
+
+<div class="language-bash
+highlighter-rouge"><pre class="highlight">
+<code><span class="nb">git clone </span>https://github.com/comp150DL/hw1.git
+</code></pre>
+</div>
+
+<p><strong>Setup Virtualenv:</strong> If you have not created a virtualenv
+for handling the python dependencies related to this course, please follow the 
+<a href="/notes/virtualenv-tutorial/">Virtualenv tutorial</a>.</p>
+<p>If you would like to work on the provided AWS instances, please
+follow the
+<a href="/notes/tufts-aws-tutorial/">Tufts AWS tutorial</a> for how to
+connect to your Jupyter Notebook remotely.</p>
+
+<p>To satisfy all software dependencies, start your virtualenv and
+double check that all required packages are installed:</p>
+
+<div class="language-bash
+highlighter-rouge"><pre class="highlight">
+<code><span class="nb">workon </span>deep-venv
+<span class="nb">cd </span> hw1
+<span class="nb">pip install -r </span>requirements.txt
+</code></pre>
+</div>
+
+<p><strong>Download data:</strong> Once you have the starter code, you
+will need to download the CIFAR-10 dataset.  Run the following from
+the <code class="highlighter-rouge">hw1</code> directory:</p>
+
+<div class="language-bash
+highlighter-rouge"><pre class="highlight"><code><span class="nb">cd </span>datasets
+./get_datasets.sh
+</code></pre>
+</div>
+
+<p><strong>Start Jupyter Notebook:</strong> After you have the
+CIFAR-10 data, you should start the Jupyter Notebook server from the
+<code class="highlighter-rouge">hw1</code> directory. If you
+are unfamiliar with Jupyter, you should read the
+<a href="https://compsci697l.github.io/notes/jupyter-tutorial/">Jupyter tutorial</a>.</p>
+
+<h3 id="submitting-your-work">Submitting your work</h3>
+
+<p>To make sure everything is working properly, <strong>remember to do
+a clean run (“Kernel -&gt; Restart &amp; Run All”) after you finish
+work for each notebook</strong> and submit the final version with all
+the outputs.  Once you are done working, zip all the code and
+notebooks in a single file and upload it to TODO. On Linux or macOS
+you can run the
+provided <code class="highlighter-rouge">collectSubmission.sh</code>
+script from <code class="highlighter-rouge">hw1/</code> to
+produce a
+file <code class="highlighter-rouge">hw1.zip</code>.</p>
+
+<h3 id="q1-k-nearest-neighbor-classifier-20-points">Q1: k-Nearest
+Neighbor classifier (20 points)</h3>
+
+<p>The Jupyter Notebook <strong>knn.ipynb</strong> will walk you
+through implementing the kNN classifier.</p>
+
+<h3 id="q2-training-a-support-vector-machine-25-points">Q2: Training a
+Support Vector Machine (25 points)</h3>
+
+<p>The Jupyter Notebook <strong>svm.ipynb</strong> will walk you
+through implementing the SVM classifier.</p>
+
+<h3 id="q3-implement-a-softmax-classifier-20-points">Q3: Implement a
+Softmax classifier (20 points)</h3>
+
+<p>The Jupyter Notebook <strong>softmax.ipynb</strong> will walk you
+through implementing the Softmax classifier.</p>
+
+<h3 id="q4-two-layer-neural-network-25-points">Q4: Two-Layer Neural
+Network (25 points)</h3>
+<p>The Jupyter Notebook <strong>two_layer_net.ipynb</strong> will walk
+you through the implementation of a two-layer neural network
+classifier.</p>
+
+<h3 id="q5-higher-level-representations-image-features-10-points">Q5:
+Higher Level Representations: Image Features (10 points)</h3>
+
+<p>The Jupyter Notebook <strong>features.ipynb</strong> will walk you
+through this exercise, in which you will examine the improvements
+gained by using higher-level representations as opposed to using raw
+pixel values.</p>
+
+<h3 id="q6-cool-bonus-do-something-extra-10-points">Q6: Cool Bonus: Do
+something extra! (+10 points)</h3>
+
+<p>Implement, investigate or analyze something extra surrounding the
+topics in this assignment, and using the code you developed. For
+example, is there some other interesting question we could have asked?
+Is there any insightful visualization you can plot? Or anything fun to
+look at? Or maybe you can experiment with a spin on the loss function?
+If you try out something cool we’ll give you up to 10 extra points and
+may feature your results in the lecture.</p>
+
+  </article>
