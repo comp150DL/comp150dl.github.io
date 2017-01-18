@@ -1,0 +1,139 @@
+---
+layout: page
+title: Getting Started on AWS
+permalink: /notes/tufts-aws-tutorial
+exclude: true
+---
+<p>If you need a GPU or would like to connect remotely to a Tufts machine for work in this course, you will need to set up your environment on one of Tufts' AWS instances. All instances will be machines named <code>aws-gpu-X</code>, where X is an integer. For this tutorial, we will be using <code>aws-gpu-1</code>. During the semester you may want to get set up on other instances in case the GPU on aws-gpu-1 is in use. </p>
+
+<p>We advise students to back up all the code they write on an aws machine using <strong>private</strong> git repositories and store all project related data, like images and metadata, to <code>/a/data</code>. If you need to switch aws machines, it should be as easy as re-running these install steps and cloning your own git repos. Treat these machines like cattle not pets. You should be totally agnostic to which machine you are using.</p>
+
+<p>Connecting to aws-gpu-1 will be just like ssh'ing to any other machine in the Tufts network. From a machine inside the Tufts CS network, you can get to aws-gpu-1 by:
+</p>
+
+<div class="language-bash
+highlighter-rouge"><pre class="highlight">
+<code><span class="nb">ssh </span>aws-gpu-1
+</code></pre>
+</div>
+
+<p>Your environment will be set up the same as on the Tufts network, but none of the data in your home directory has been copied over to the AWS machines.</p>
+
+<p>If you want to ssh directly to the aws machines from home, I suggest using this:</p>
+
+<div class="language-bash
+highlighter-rouge"><pre class="highlight">
+<code><span class="nb">ssh </span>&lt;username&gt;@linux.eecs.tufts.edu -t aws-gpu-1
+</code></pre>
+</div>
+
+<p>Once you are on an aws machine, you can install all python dependencies and deep learning libraries. First, clone the course repository to get the convenient setup scripts we've written for you.</p>
+
+<div class="language-bash
+highlighter-rouge"><pre class="highlight">
+<code><span class="nb">git clone </span>https://github.com/comp150DL/comp150dl.git
+<span class="nb">cd</span> comp150dl
+<span class="nb">cd</span> bin
+</code></pre>
+</div>
+
+<p>
+For this course, you will be using Python and many Python libraries. In order to manage all the packages you will be installing, we will be using a tool called <a href="https://virtualenv.pypa.io/en/stable/"><code>virtualenv</code></a> and some extensions to that tool 
+<a href="https://virtualenvwrapper.readthedocs.io/en/latest/"><code>virtualenvwrapper</code></a>. Virtualenv is used in development to isolate the python environment you will use for one project from both the system python environment and environments for other python projects that have contradicting requirements. The start up scripts we provide will set up your virtualenv for this class.
+</p>
+
+<p>
+Note: virtual environments install all python packages in a user specified location. In our install scripts, we create that location at <code>~/Envs</code>. If you would like your virtualenv created in a different location, please open up the install script and change ~/Env to wherever you like.
+</p>
+
+<h4>Installing Jupyter, Caffe, Tensorflow, and/or Torch</h4>
+
+<p>To make your virtual environment and install all related Python packages and deep learning libraries, run the following commands. Note that install may take more than an hour. If you are not interested in using either Caffe, Tensorflow, or Torch, go into the script <code>start-install</code> and comment out the instructions for installing whichever one(s) you don't want.</p>
+
+<div class="language-bash
+highlighter-rouge"><pre class="highlight">
+<code><span class="nb">chmod +x</span> start-install
+./start-install
+</code></pre>
+</div>
+<p>
+To gain access to all of the python packages you've just installed, you will have to activate your virtualenv. To do that run:
+</p>
+
+<div class="language-bash
+highlighter-rouge"><pre class="highlight">
+<code><span class="nb">workon </span>deep-venv
+</code></pre>
+</div>
+
+<p>If you are using an excellent shell like <code>zsh</code> or an ok shell like <code>bash</code>, you will probably see your terminal prompt prepended with <strong>(deep-venv)</strong> while you are in you virtualenv.
+</p>
+
+<p>
+If you would like to switch to another virtualenv, or get out of deep-venv for any reason, use the following command:
+</p>
+
+<div class="language-bash
+highlighter-rouge"><pre class="highlight">
+<code><span class="nb">deactivate </span>
+</code></pre>
+</div>
+
+<h4>Getting to your Homework</h4>
+
+<p> AWS machines should be run in a headless fashion. To run a Jupyter notebook hosting your homework, you will have to do a couple extra steps compared to running it at home.</p>
+<p>First, clone the first assignment's repository. Then start a notebook server that doesn't startup a local browser.</p>
+<div class="language-bash
+highlighter-rouge"><pre class="highlight">
+<code><span class="nb">workon </span>deep-venv
+<span class="nb">cd </span>~/comp150dl
+<span class="nb">git clone </span>https://github.com/comp150DL/hw1.git
+<span class="nb">cd </span>hw1
+jupyter notebook --no-browser
+</code></pre>
+</div>
+
+<p>The headless notebook server will print out slightly different instructions that if you did this with the browser version. This notebook server expects you to connect remotely, and log in with the unique token it has printed in the last line of the output. If you open up a browser window on your home machine and navigate to <code>http://localhost:8888</code> you won't see anything however. To get you connected to the jupyter notebook running on localhost on the aws machine, we will use ssh tunneling.
+</p>
+
+<div class="language-bash
+highlighter-rouge"><pre class="highlight" style="background: darkgrey">
+<code>% jupyter notebook --no-browser
+[I 15:21:55.805 NotebookApp] Writing notebook server cookie secret to /run/user/38554/jupyter/notebook_cookie_secret
+[I 15:22:00.661 NotebookApp] Serving notebooks from local directory: /a/h/&lt;username&gt;/comp150dl
+[I 15:22:00.661 NotebookApp] 0 active kernels
+[I 15:22:00.661 NotebookApp] The Jupyter Notebook is running at: http://localhost:8888/?token=7ca4531b0d82b5b923707bbc0628ac251a2707b7926ba075
+[I 15:22:00.661 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[C 15:22:00.662 NotebookApp]
+
+    Copy/paste this URL into your browser when you connect for the first time,
+    to login with a token:
+        http://localhost:8888/?token=7ca4531b0d82b5b923707bbc0628ac251a2707b7926ba075
+</code></pre>
+</div>
+
+<p><strong>ssh tunneling</strong> is a technique for forwarding all incoming traffic on a local port to a port on a remote machine. Because the AWS machines are behind the Tufts firewall, we will have to tunnel twice. To begin, use the following command to tunnel from your home machine to the machine <code>linux</code> at tufts. This command is forwarding local port 8888 to linux's port 8888. If you are already inside the Tufts network, you can skip to the next step.</p>
+
+<div class="language-bash
+highlighter-rouge" ><pre class="highlight" style="background: bisque">
+<code><span class="nb">ssh -N -f -L</span> 8888:localhost:8888 &lt;username&gt;@linux.eecs.tufts.edu
+</code></pre>
+</div>
+
+<p>Next, we will tunnel from linux to aws-gpu-1. Again, we are forwarding traffic from linux's port 8888 to aws-gpu-1's port 8888.</p>
+
+<div class="language-bash
+highlighter-rouge" ><pre class="highlight" style="background: lightcoral">
+<code><span class="nb">ssh -N -f -L</span> 8888:localhost:8888 &lt;username&gt;@aws-gpu-1
+</code></pre>
+</div>
+
+<p>Now on your local machine open your favorite browser and navigate to <a href="http://localhost:8888/">http://localhost:8888/</a>. You will see the contents of your hw1 dirctory on aws-gpu-1.
+</p>
+
+<p>If one of these connections goes down, you will have to reconnect to continue working. We suggest using <strong>tmux</strong> or <strong>screen</strong> to keep the connections running even if your terminal window closes.</p>
+
+<p>Your browser window should be displaying something like this:</p>
+<img  src="/img/jupyter_hw_home.png" >
+<p>If you click on the file knn.ipynb, a new window will open up with your first problem set.</p>
+<img  src="/img/jupyter_hw_page1.png" >

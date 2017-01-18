@@ -1,0 +1,128 @@
+---
+layout: page
+title: Getting Started with Virtualenv
+permalink: /notes/virtualenv-tutorial
+exclude: true
+---
+<p>
+For this course, you will be using Python and many Python libraries. In order to manage all the packages you will be installing, we will be using a tool called <a href="https://virtualenv.pypa.io/en/stable/"><code>virtualenv</code></a> and some extensions to that tool 
+<a href="https://virtualenvwrapper.readthedocs.io/en/latest/"><code>virtualenvwrapper</code></a>. Virtualenv is used in development to isolate the python environment you will use for one project from both the system python environment and environments for other python projects that have contradicting requirements. 
+</p>
+
+<h2>At Home</h2>
+
+<p>
+For the homeworks, you will be writing your own classifiers and networks in python. We have written some helpful scripts for setting up your virtualenv and downloading all required dependencies. To begin, please clone the course repository. 
+</p>
+
+<div class="language-bash
+highlighter-rouge"><pre class="highlight">
+<code><span class="nb">git clone </span>https://github.com/comp150DL/comp150dl.git
+<span class="nb">cd</span> comp150dl
+<span class="nb">cd</span> bin
+</code></pre>
+</div>
+
+<h4>Installing Only Python Requirements</h4>
+
+<p>
+For the homeworks, the only requirements are an array of python packages. For your own work implementing papers read in class or in your final project, you may want to use a deep learning library. To train full-scale netowrks, it is advisable to use a GPU. If you do not have a GPU on your home machine, you may want to only install the requirements for the homeworks. If you want to install only the homework requirements on your home machine, please use the <code class="highlighter-rouge">start-pythondeps-only</code> install script. If you would like to also install Caffe, TensorFlow, and/ or Torch, please see below.
+</p>
+<p>
+Note: virtual environments install all python packages in a user specified location. In our install scripts, we create that location at <code>~/Envs</code>. If you would like your virtualenv created in a different location, please open up the install script and change ~/Env to wherever you like.
+</p>
+<p><strong>To create your virtualenv:</strong> run the following commands from the <code>comp150dl/bin</code> directory.</p>
+
+<div class="language-bash
+highlighter-rouge"><pre class="highlight">
+<code><span class="nb">chmod +x</span> start-pythondeps-only
+./start-pythondeps-only
+</code></pre>
+</div>
+
+<p>
+Now you have created a virtualenv called <code>deep-venv</code>! To get started with your virtualenv, skip down to "Using Your Virtualenv".
+</p>
+
+
+<h4>Also Installing Caffe, Tensorflow, and/or Torch</h4>
+<p>We will be using the script <code class="highlighter-rouge">start-home</code> to install all python-related dependencies as well as Caffe, TensorFlow, and Torch. If you don't need all of those libraries, edit start-home to only install the ones you want.
+</p>
+<p>
+If you are interested in installing Caffe for OS X or Linux, please look in
+<code class="highlighter-rouge">osx_caffe_Makefile.config</code> and change the environment variables to ones suitable for your installation. You may need to change the line reading <code class="highlighter-blue">BLAS := atlas</code> to whichever version of BLAS you have installed. Also be sure to have <code>CUDA</code> installed, and have the path to the CUDA files in the osx_caffe_Makefile.config.
+</p>
+<p>To install everything, run the following commands. Note that install may take more than an hour.</p>
+<div class="language-bash
+highlighter-rouge"><pre class="highlight">
+<code><span class="nb">chmod +x</span> start-home
+./start-home
+</code></pre>
+</div>
+
+<h4>Using Your Virtualenv</h4>
+
+<p>
+To gain access to all of the python packages you've just installed, you will have to activate your virtualenv. To do that run:
+</p>
+
+<div class="language-bash
+highlighter-rouge"><pre class="highlight">
+<code><span class="nb">workon </span>deep-venv
+</code></pre>
+</div>
+
+<p>If you are using an excellent shell like <code>zsh</code> or an ok shell like <code>bash</code>, you will probably see your terminal prompt prepended with <strong>(deep-venv)</strong> while you are in you virtualenv.
+</p>
+
+<p>
+If you would like to switch to another virtualenv, or get out of deep-venv for any reason, use the following command:
+</p>
+
+<div class="language-bash
+highlighter-rouge"><pre class="highlight">
+<code><span class="nb">deactivate </span>
+</code></pre>
+</div>
+
+<h4>Getting to your Homework</h4>
+
+<p>
+Now that you have all dependencies installed, you probably want to get to your homework. To get your first assignment and start your Jupyter notebook, you can use the following commands:
+</p>
+
+<div class="language-bash
+highlighter-rouge"><pre class="highlight">
+<code><span class="nb">workon </span>deep-venv
+<span class="nb">cd </span>~/comp150dl
+<span class="nb">git clone </span>https://github.com/comp150DL/hw1.git
+<span class="nb">cd </span>hw1
+jupyter notebook
+</code></pre>
+</div>
+
+<p>Running that last command will probably start a browser instance with your Jupyter notebook home directory. At the terminal, you will see output like this:</p>
+
+<div class="language-bash
+highlighter-rouge"><pre class="highlight" style="background: darkgrey">
+<code>% jupyter notebook
+[I 17:25:30.688 NotebookApp] The port 8888 is already in use, trying another random port.
+[I 17:25:30.759 NotebookApp] Serving notebooks from local directory: /Users/&lt;username&gt;
+[I 17:25:30.759 NotebookApp] 0 active kernels
+[I 17:25:30.759 NotebookApp] The IPython Notebook is running at: http://localhost:8889/
+[I 17:25:30.760 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+</code></pre>
+</div>
+<p>If a new browser window didn't pop-up, you can open your favorite browser and navigate to <a href="http://localhost:8889/">http://localhost:8889/</a>. You should see a page like this:</p>
+
+<img  src="/img/jupyter_hw_home.png" >
+
+<p>If you click on the file knn.ipynb, a new window will open up with your first problem set.</p>
+<img  src="/img/jupyter_hw_page1.png" >
+
+
+<h2>At Tufts (AWS)</h2>
+
+<p>
+If you don't have access to a GPU and would like to begin development on your final project or any full-scale network training for this course, you can use any of the available AWS machines connected to the Tufts network. Please follow <a href="/notes/tufts-aws-tutorial">this tutorial</a>  for getting started on aws.
+</p>
