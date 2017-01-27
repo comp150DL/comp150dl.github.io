@@ -23,7 +23,7 @@ highlighter-rouge"><pre class="highlight">
 
 <div class="language-bash
 highlighter-rouge"><pre class="highlight">
-<code><span class="nb">ssh </span>&lt;username&gt;@linux.eecs.tufts.edu -t ssh aws-gpu-1
+<code><span class="nb">ssh </span>&lt;username&gt;@sunfire61.eecs.tufts.edu -t ssh aws-gpu-1
 </code></pre>
 </div>
 
@@ -112,15 +112,15 @@ highlighter-rouge"><pre class="highlight" style="background: darkgrey">
 </code></pre>
 </div>
 
-<p><strong>ssh tunneling</strong> is a technique for forwarding all incoming traffic on a local port to a port on a remote machine. Because the AWS machines are behind the Tufts firewall, we will have to tunnel twice. To begin, use the following command to tunnel from your home machine to the machine <code>linux</code> at tufts. This command is forwarding local port 8888 to linux's port 8888. If you are already inside the Tufts network, you can skip to the next step.</p>
+<p><strong>ssh tunneling</strong> is a technique for forwarding all incoming traffic on a local port to a port on a remote machine. Because the AWS machines are behind the Tufts firewall, we will have to tunnel twice. To begin, use the following command to tunnel from your home machine to the machine <code>sunfire61</code> at tufts. It doesn't have to be exactly <code>sunfire61</code>, just any named machine. Don't use <code>linux</code> as that will route you to different machines at different times. This command is forwarding local port 8888 to sunfire61's port 8888. If you are already inside the Tufts network, you can skip to the next step.</p>
 
 <div class="language-bash
 highlighter-rouge" ><pre class="highlight" style="background: bisque">
-<code><span class="nb">ssh -N -f -L</span> 8888:localhost:8888 &lt;username&gt;@linux.eecs.tufts.edu
+<code><span class="nb">ssh -N -f -L</span> 8888:localhost:8888 &lt;username&gt;@sunfire61.eecs.tufts.edu
 </code></pre>
 </div>
 
-<p>Next, we will tunnel from linux to aws-gpu-1. Again, we are forwarding traffic from linux's port 8888 to aws-gpu-1's port 8888.</p>
+<p>Next, we will tunnel from sunfire61 to aws-gpu-1. Again, we are forwarding traffic from sunfire61's port 8888 to aws-gpu-1's port 8888.</p>
 
 <div class="language-bash
 highlighter-rouge" ><pre class="highlight" style="background: lightcoral">
