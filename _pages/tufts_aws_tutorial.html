@@ -23,7 +23,7 @@ highlighter-rouge"><pre class="highlight">
 
 <div class="language-bash
 highlighter-rouge"><pre class="highlight">
-<code><span class="nb">ssh </span>&lt;username&gt;@sunfire61.eecs.tufts.edu -t ssh aws-gpu-1
+<code><span class="nb">ssh </span>&lt;username&gt;@aws-gpu-1.eecs.tufts.edu
 </code></pre>
 </div>
 
@@ -82,56 +82,57 @@ highlighter-rouge"><pre class="highlight">
 <h4>Getting to your Homework</h4>
 
 <p> AWS machines should be run in a headless fashion. To run a Jupyter notebook hosting your homework, you will have to do a couple extra steps compared to running it at home.</p>
-<p>First, clone the first assignment's repository. Then start a notebook server that doesn't startup a local browser.</p>
+<p>First, clone the first assignment's repository. Then start a notebook server that listens on a publically accessible port. These startup arguments will allow you to run the notebook as a webserver that you can connect to from any browser.</p>
 <div class="language-bash
 highlighter-rouge"><pre class="highlight">
 <code><span class="nb">workon </span>deep-venv
 <span class="nb">cd </span>~/comp150dl
 <span class="nb">git clone </span>https://github.com/comp150DL/hw1.git
 <span class="nb">cd </span>hw1
-jupyter notebook --no-browser
+jupyter notebook --ip=10.20.1.6 --port=3050
 </code></pre>
 </div>
 
-<p>The headless notebook server will print out slightly different instructions that if you did this with the browser version. This notebook server expects you to connect remotely, and log in with the unique token it has printed in the last line of the output. If you open up a browser window on your home machine and navigate to <code>http://localhost:8888</code> you won't see anything however. To get you connected to the jupyter notebook running on localhost on the aws machine, we will use ssh tunneling.
+<p>Pick any port number between 3000-4000. Those are the publically accessible ports set by the sysadmin. The notebook server will print out slightly different instructions that if you did this without the ip and port arguments. This notebook server expects you to connect remotely, and log in with the unique token it has printed in the last line of the output. If you open up a browser window on your home machine and navigate to <code>http://aws-gpu-1.eecs.tufts.edu:3000/</code> you will be asked to enter a token. This token is printed in the terminal where you started the notebook server. 
 </p>
 
 <div class="language-bash
 highlighter-rouge"><pre class="highlight" style="background: darkgrey">
-<code>% jupyter notebook --no-browser
-[I 15:21:55.805 NotebookApp] Writing notebook server cookie secret to /run/user/38554/jupyter/notebook_cookie_secret
-[I 15:22:00.661 NotebookApp] Serving notebooks from local directory: /a/h/&lt;username&gt;/comp150dl
-[I 15:22:00.661 NotebookApp] 0 active kernels
-[I 15:22:00.661 NotebookApp] The Jupyter Notebook is running at: http://localhost:8888/?token=7ca4531b0d82b5b923707bbc0628ac251a2707b7926ba075
-[I 15:22:00.661 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
-[C 15:22:00.662 NotebookApp]
+<code>% jupyter-notebook --ip=10.20.1.6 --port=3000
+[I 21:00:26.990 NotebookApp] Writing notebook server cookie secret to /run/user/38554/jupyter/notebook_cookie_secret
+[I 21:00:38.452 NotebookApp] Serving notebooks from local directory: /a/h/<username>/comp150dl
+[I 21:00:38.452 NotebookApp] 0 active kernels
+[I 21:00:38.452 NotebookApp] The Jupyter Notebook is running at: http://10.20.1.6:3000/?token=22bef6872a850da17af9ea33073232b89639a36e03547a07
+[I 21:00:38.452 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[W 21:00:38.452 NotebookApp] No web browser found: could not locate runnable browser.
+[C 21:00:38.452 NotebookApp]
 
     Copy/paste this URL into your browser when you connect for the first time,
     to login with a token:
-        http://localhost:8888/?token=7ca4531b0d82b5b923707bbc0628ac251a2707b7926ba075
+        http://10.20.1.6:3000/?token=22bef6872a850da17af9ea33073232b89639a36e03547a07
 </code></pre>
 </div>
 
-<p><strong>ssh tunneling</strong> is a technique for forwarding all incoming traffic on a local port to a port on a remote machine. Because the AWS machines are behind the Tufts firewall, we will have to tunnel twice. To begin, use the following command to tunnel from your home machine to the machine <code>sunfire61</code> at tufts. It doesn't have to be exactly <code>sunfire61</code>, just any named machine. Don't use <code>linux</code> as that will route you to different machines at different times. This command is forwarding local port 8888 to sunfire61's port 8888. If you are already inside the Tufts network, you can skip to the next step.</p>
+<!-- <p><strong>ssh tunneling</strong> is a technique for forwarding all incoming traffic on a local port to a port on a remote machine. Because the AWS machines are behind the Tufts firewall, we will have to tunnel twice. To begin, use the following command to tunnel from your home machine to the machine <code>sunfire61</code> at tufts. It doesn't have to be exactly <code>sunfire61</code>, just any named machine. Don't use <code>linux</code> as that will route you to different machines at different times. This command is forwarding local port 8888 to sunfire61's port 8888. If you are already inside the Tufts network, you can skip to the next step.</p> -->
 
-<div class="language-bash
-highlighter-rouge" ><pre class="highlight" style="background: bisque">
-<code><span class="nb">ssh -N -f -L</span> 8888:localhost:8888 &lt;username&gt;@sunfire61.eecs.tufts.edu
-</code></pre>
-</div>
+<!-- <div class="language-bash -->
+<!-- highlighter-rouge" ><pre class="highlight" style="background: bisque"> -->
+<!-- <code><span class="nb">ssh -N -f -L</span> 8888:localhost:8888 &lt;username&gt;@sunfire61.eecs.tufts.edu -->
+<!-- </code></pre> -->
+<!-- </div> -->
 
-<p>Next, we will tunnel from sunfire61 to aws-gpu-1. Again, we are forwarding traffic from sunfire61's port 8888 to aws-gpu-1's port 8888.</p>
+<!-- <p>Next, we will tunnel from sunfire61 to aws-gpu-1. Again, we are forwarding traffic from sunfire61's port 8888 to aws-gpu-1's port 8888.</p> -->
 
-<div class="language-bash
-highlighter-rouge" ><pre class="highlight" style="background: lightcoral">
-<code><span class="nb">ssh -N -f -L</span> 8888:localhost:8888 &lt;username&gt;@aws-gpu-1
-</code></pre>
-</div>
+<!-- <div class="language-bash -->
+<!-- highlighter-rouge" ><pre class="highlight" style="background: lightcoral"> -->
+<!-- <code><span class="nb">ssh -N -f -L</span> 8888:localhost:8888 &lt;username&gt;@aws-gpu-1 -->
+<!-- </code></pre> -->
+<!-- </div> -->
 
-<p>Now on your local machine open your favorite browser and navigate to <a href="http://localhost:8888/">http://localhost:8888/</a>. You will see the contents of your hw1 dirctory on aws-gpu-1.
-</p>
+<!-- <p>Now on your local machine open your favorite browser and navigate to <a href="http://localhost:8888/">http://localhost:8888/</a>. You will see the contents of your hw1 dirctory on aws-gpu-1. -->
+<!-- </p> -->
 
-<p>If one of these connections goes down, you will have to reconnect to continue working. We suggest using <strong>tmux</strong> or <strong>screen</strong> to keep the connections running even if your terminal window closes.</p>
+<!-- <p>If one of these connections goes down, you will have to reconnect to continue working. We suggest using <strong>tmux</strong> or <strong>screen</strong> to keep the connections running even if your terminal window closes.</p> -->
 
 <p>Your browser window should be displaying something like this:</p>
 <img  src="/img/jupyter_hw_home.png" >
