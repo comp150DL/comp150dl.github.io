@@ -4,12 +4,86 @@ title: Homework 3
 permalink: /hw/hw3/
 exclude: true
 ---
+  <article class="post-content">
+  <p>In this assignment you will practice writing backpropagation code and training Convolutional
+Neural Networks. The goal of this assignment
+are is follows:</p>
 
+<ul>
   <li>understand the architecture of <strong>Convolutional Neural Networks</strong> and train
 gain experience with training these models on data</li>
+</ul>
 
-<h3 id="q4-convnet-on-cifar-10-30-points">Q4: ConvNet on CIFAR-10 (30 points)</h3>
+<h3 id="setup">Setup</h3>
+<p>Get the starter code by cloning the <a href="https://github.com/comp150DL/hw3.git">hw3 github repository</a>. 
+This can be accomplished by executing the following command:</p>
+
+<div class="language-bash
+highlighter-rouge"><pre class="highlight">
+<code><span class="nb">git clone </span>https://github.com/comp150DL/hw3.git
+</code></pre>
+</div>
+
+<p><strong>Setup Virtualenv:</strong> If you have not created a virtualenv
+for handling the python dependencies related to this course, please follow the 
+<a href="/notes/virtualenv-tutorial/">Virtualenv tutorial</a>.</p>
+<p>If you would like to work on the provided AWS instances, please
+follow the
+<a href="/notes/tufts-aws-tutorial/">Tufts AWS tutorial</a> for how to
+connect to your Jupyter Notebook remotely.</p>
+
+<p>To satisfy all software dependencies, start your virtualenv and
+double check that all required packages are installed:</p>
+
+<div class="language-bash
+highlighter-rouge"><pre class="highlight">
+<code><span class="nb">workon </span>deep-venv
+<span class="nb">cd </span> hw3
+<span class="nb">pip install -r </span>requirements.txt
+</code></pre>
+</div>
+
+<p><strong>Download data:</strong> Once you have the starter code, you
+will need to download the CIFAR-10 dataset.  Run the following from
+the <code class="highlighter-rouge">hw3</code> directory:</p>
+
+<div class="language-bash
+highlighter-rouge"><pre class="highlight"><code><span class="nb">cd </span>datasets
+./get_datasets.sh
+</code></pre>
+</div>
+
+<p><strong>Start Jupyter Notebook:</strong> After you have the
+CIFAR-10 data, you should start the Jupyter Notebook server from the
+<code class="highlighter-rouge">hw3</code> directory. If you
+are unfamiliar with Jupyter, you should read the
+<a href="https://compsci697l.github.io/notes/jupyter-tutorial/">Jupyter tutorial</a>.</p>
+
+<h3 id="submitting-your-work">Submitting your work</h3>
+
+<p>To make sure everything is working properly, <strong>remember to do
+a clean run (“Kernel -&gt; Restart &amp; Run All”) after you finish
+work for each notebook</strong> and submit the final version with all
+the outputs.  Once you are done working, compress all the code and
+notebooks in a single file and submit your archive by emailing to comp150dl@gmail.com.
+On Linux or macOS
+you can run the
+provided <code class="highlighter-rouge">collectSubmission.sh</code>
+script from <code class="highlighter-rouge">hw3/</code> to
+produce a
+file <code class="highlighter-rouge">hw3.zip</code> (or 
+<code class="highlighter-rouge">hw3.tar.gz</code> if zip is not on your system) .</p>
+
+
+
+<h3 id="q1-convnet-on-cifar-10-30-points">Q1: ConvNet on CIFAR-10 (90 points)</h3>
 <p>In the Jupyter Notebook <code class="highlighter-rouge">ConvolutionalNetworks.ipynb</code> you will implement several
 new layers that are commonly used in convolutional networks. You will train a
 (shallow) convolutional network on CIFAR-10, and it will then be up to you to
 train the best network that you can.</p>
+
+<h3 id="q2-do-something-extra-up-to-10-points">Q2: Do something extra! (10 points)</h3>
+<p>In the process of training your CNN, you should feel free to implement
+anything that you want to get better performance. You can modify the solver,
+implement additional layers, use different types of regularization, use an
+ensemble of models, or anything else that comes to mind.</p>
