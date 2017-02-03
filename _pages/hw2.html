@@ -4,4 +4,105 @@ title: Assignment 2
 permalink: /hw/hw2/
 exclude: true
 ---
+  <article class="post-content">
+  <p>In this assignment you will practice writing backpropagation code, and training
+Neural Networks. The goals of this assignment
+are as follows:</p>
+
+<ul>
+  <li>understand <strong>Neural Networks</strong> and how they are arranged in layered
+architectures</li>
+  <li>understand and be able to implement (vectorized) <strong>backpropagation</strong></li>
+  <li>implement various <strong>update rules</strong> used to optimize Neural Networks</li>
+  <li>implement <strong>batch normalization</strong> for training deep networks</li>
+  <li>implement <strong>dropout</strong> to regularize networks</li>
+  <li>effectively <strong>cross-validate</strong> and find the best hyperparameters for Neural
+Network architecture</li>
+
+</ul>
+<h3 id="setup">Setup</h3>
+<p>Get the starter code by cloning the <a href="https://github.com/comp150DL/hw2.git">hw2 github repository</a>. 
+This can be accomplished by executing the following command:</p>
+
+<div class="language-bash
+highlighter-rouge"><pre class="highlight">
+<code><span class="nb">git clone </span>https://github.com/comp150DL/hw2.git
+</code></pre>
+</div>
+
+<p><strong>Setup Virtualenv:</strong> If you have not created a virtualenv
+for handling the python dependencies related to this course, please follow the 
+<a href="/notes/virtualenv-tutorial/">Virtualenv tutorial</a>.</p>
+<p>If you would like to work on the provided AWS instances, please
+follow the
+<a href="/notes/tufts-aws-tutorial/">Tufts AWS tutorial</a> for how to
+connect to your Jupyter Notebook remotely.</p>
+
+<p>To satisfy all software dependencies, start your virtualenv and
+double check that all required packages are installed:</p>
+
+<div class="language-bash
+highlighter-rouge"><pre class="highlight">
+<code><span class="nb">workon </span>deep-venv
+<span class="nb">cd </span> hw2
+<span class="nb">pip install -r </span>requirements.txt
+</code></pre>
+</div>
+
+<p><strong>Download data:</strong> Once you have the starter code, you
+will need to download the CIFAR-10 dataset.  Run the following from
+the <code class="highlighter-rouge">hw2</code> directory:</p>
+
+<div class="language-bash
+highlighter-rouge"><pre class="highlight"><code><span class="nb">cd </span>datasets
+./get_datasets.sh
+</code></pre>
+</div>
+
+<p><strong>Start Jupyter Notebook:</strong> After you have the
+CIFAR-10 data, you should start the Jupyter Notebook server from the
+<code class="highlighter-rouge">hw2</code> directory. If you
+are unfamiliar with Jupyter, you should read the
+<a href="https://compsci697l.github.io/notes/jupyter-tutorial/">Jupyter tutorial</a>.</p>
+
+<h3 id="submitting-your-work">Submitting your work</h3>
+
+<p>To make sure everything is working properly, <strong>remember to do
+a clean run (“Kernel -&gt; Restart &amp; Run All”) after you finish
+work for each notebook</strong> and submit the final version with all
+the outputs.  Once you are done working, compress all the code and
+notebooks in a single file and submit your archive by emailing to comp150dl@gmail.com.
+On Linux or macOS
+you can run the
+provided <code class="highlighter-rouge">collectSubmission.sh</code>
+script from <code class="highlighter-rouge">hw2/</code> to
+produce a
+file <code class="highlighter-rouge">hw2.zip</code> (or 
+<code class="highlighter-rouge">hw2.tar.gz</code> if zip is not on your system) .</p>
+
+<h3 id="q1-fully-connected-neural-network-30-points">Q1: Fully-connected Neural Network (40 points)</h3>
+<p>The Jupyter notebook <code class="highlighter-rouge">FullyConnectedNets.ipynb</code> will introduce you to our
+modular layer design, and then use those layers to implement fully-connected
+networks of arbitrary depth. To optimize these models you will implement several
+popular update rules.</p>
+
+<h3 id="q2-batch-normalization-30-points">Q2: Batch Normalization (40 points)</h3>
+<p>In the Jupyter notebook <code class="highlighter-rouge">BatchNormalization.ipynb</code> you will implement batch
+normalization, and use it to train deep fully-connected networks.</p>
+
+<h3 id="q3-dropout-10-points">Q3: Dropout (20 points)</h3>
+<p>The Jupyter notebook <code class="highlighter-rouge">Dropout.ipynb</code> will help you implement Dropout and explore
+its effects on model generalization.</p>
+
+<h3 id="q5-do-something-extra-up-to-10-points">Q5: Do something extra! (up to +10 points)</h3>
+<p>In the process of training your network, you should feel free to implement
+anything that you want to get better performance. You can modify the solver,
+implement additional layers, use different types of regularization, use an
+ensemble of models, or anything else that comes to mind. If you implement these
+or other ideas not covered in the assignment then you will be awarded some bonus
+points.</p>
+
+
+  </article>
+
 
