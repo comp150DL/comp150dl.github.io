@@ -1,6 +1,120 @@
 ---
 layout: page
-title: Assignment 4
+title: Homework 4
 permalink: /hw/hw4/
 exclude: true
 ---
+
+  <article class="post-content">
+<p>In this assignment you will implement recurrent networks, and apply them to image captioning on Microsoft COCO. We will also introduce the TinyImageNet dataset, and use a pretrained model on this dataset to explore different applications of image gradients.</p>
+
+<p>The goals of this assignment are as follows:</p>
+
+<ul>
+  <li>Understand the architecture of <em>recurrent neural networks (RNNs)</em> and how they operate on sequences by sharing weights over time</li>
+  <li>Understand the difference between vanilla RNNs and Long-Short Term Memory (LSTM) RNNs</li>
+  <li>Understand how to sample from an RNN at test-time</li>
+  <li>Understand how to combine convolutional neural nets and recurrent nets to implement an image captioning system</li>
+  <li>Understand how a trained convolutional network can be used to compute gradients with respect to the input image</li>
+  <li>Implement and different applications of image gradients, including saliency maps, fooling images, class visualizations, feature inversion, and DeepDream.</li>
+</ul>
+
+<h3 id="setup">Setup</h3>
+<p>Get the starter code by cloning the <a href="https://github.com/comp150DL/hw3.git">hw4 github repository</a>. 
+This can be accomplished by executing the following command:</p>
+
+<div class="language-bash
+highlighter-rouge"><pre class="highlight">
+<code><span class="nb">git clone </span>https://github.com/comp150DL/hw4.git
+</code></pre>
+</div>
+
+<p><strong>Setup Virtualenv:</strong> If you have not created a virtualenv
+for handling the python dependencies related to this course, please follow the 
+<a href="/notes/virtualenv-tutorial/">Virtualenv tutorial</a>.</p>
+<p>If you would like to work on the provided AWS instances, please
+follow the
+<a href="/notes/tufts-aws-tutorial/">Tufts AWS tutorial</a> for how to
+connect to your Jupyter Notebook remotely.</p>
+
+<p>To satisfy all software dependencies, start your virtualenv and
+double check that all required packages are installed:</p>
+
+<div class="language-bash
+highlighter-rouge"><pre class="highlight">
+<code><span class="nb">workon </span>deep-venv
+<span class="nb">cd </span> hw4
+<span class="nb">pip install -r </span>requirements.txt
+</code></pre>
+</div>
+
+<p><strong>Download data:</strong> Once you have the starter code, you
+will need to download the rocessed MS-COCO dataset, the TinyImageNet
+dataset, and the pretrained TinyImageNet model.  Run the following
+from the <code class="highlighter-rouge">hw4</code> directory:</p>
+
+<div class="language-bash
+highlighter-rouge"><pre class="highlight"><code><span class="nb">cd </span>datasets
+./get_coco_captioning.sh
+./get_tiny_imagenet_a.sh
+./get_pretrained_model.sh
+</code></pre>
+</div>
+
+<p><strong>Compile the Cython extension:</strong> Convolutional Neural Networks require a very
+efficient implementation. We have implemented of the functionality using
+<a href="http://cython.org/">Cython</a>; you will need to compile the Cython extension
+before you can run the code. From the <code class="highlighter-rouge">hw4/hw4</code> directory, run the following
+command:</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>python setup.py build_ext --inplace
+</code></pre>
+</div>
+
+
+<p><strong>Start Jupyter Notebook:</strong> After you have the
+ data, you should start the Jupyter Notebook server from the
+<code class="highlighter-rouge">hw4</code> directory. If you
+are unfamiliar with Jupyter, you should read the
+<a href="https://compsci697l.github.io/notes/jupyter-tutorial/">Jupyter tutorial</a>.</p>
+
+<h3 id="submitting-your-work">Submitting your work</h3>
+
+<p>To make sure everything is working properly, <strong>remember to do
+a clean run (“Kernel -&gt; Restart &amp; Run All”) after you finish
+work for each notebook</strong> and submit the final version with all
+the outputs.  Once you are done working, compress all the code and
+notebooks in a single file and submit your archive by emailing to comp150dl@gmail.com.
+On Linux or macOS
+you can run the
+provided <code class="highlighter-rouge">collectSubmission.sh</code>
+script from <code class="highlighter-rouge">hw4/</code> to
+produce a
+file <code class="highlighter-rouge">hw4.zip</code> (or 
+<code class="highlighter-rouge">hw4.tar.gz</code> if zip is not on your system) .</p>
+
+
+<h3 id="q1-image-captioning-with-vanilla-rnns-40-points">Q1: Image Captioning with Vanilla RNNs (40 points)</h3>
+<p>The Jupyter notebook <code class="highlighter-rouge">RNN_Captioning.ipynb</code> will walk you through the
+implementation of an image captioning system on MS-COCO using vanilla recurrent
+networks.</p>
+
+<h3 id="q2-image-captioning-with-lstms-35-points">Q2: Image Captioning with LSTMs (35 points)</h3>
+<p>The Jupyter notebook <code class="highlighter-rouge">LSTM_Captioning.ipynb</code> will walk you through the
+implementation of Long-Short Term Memory (LSTM) RNNs, and apply them to image
+captioning on MS-COCO.</p>
+
+<h3 id="q3-image-gradients-saliency-maps-and-fooling-images-10-points">Q3: Image Gradients: Saliency maps and Fooling Images (10 points)</h3>
+<p>The Jupyter notebook <code class="highlighter-rouge">ImageGradients.ipynb</code> will introduce the TinyImageNet
+dataset. You will use a pretrained model on this dataset to compute gradients
+with respect to the image, and use them to produce saliency maps and fooling
+images.</p>
+
+<h3 id="q4-image-generation-classes-inversion-deepdream-15-points">Q4: Image Generation: Classes, Inversion, DeepDream (15 points)</h3>
+<p>In the Jupyter notebook <code class="highlighter-rouge">ImageGeneration.ipynb</code> you will use the pretrained
+TinyImageNet model to generate images. In particular you will generate
+class visualizations and implement feature inversion and DeepDream.</p>
+
+<h3 id="q5-do-something-extra-up-to-10-points">Q5: Do something extra! (up to +10 points)</h3>
+<p>Given the components of the assignment, try to do something cool. Maybe there is
+some way to generate images that we did not implement in the assignment?</p>
